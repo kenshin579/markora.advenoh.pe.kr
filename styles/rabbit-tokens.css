@@ -1,0 +1,361 @@
+/* ==========================================================================
+   Rabbit Design System — Colors & Typography Tokens
+   --------------------------------------------------------------------------
+   Source of truth: ui/src/design-tokens/{DesignTokens,Typography}.stories.tsx
+
+   Layered token system:
+     1. Primitive palette  (--rabbit-{hue}-{0..9})
+     2. Semantic tokens    (--rabbit-color-{role})
+     3. Tailwind @theme    (mapped onto Tailwind utility classes — see notes)
+
+   Light mode is the default. Add `.dark` to <html> or <body> for dark mode.
+   ========================================================================== */
+
+:root {
+  /* --- Primitive palette (10-step scales, light-mode anchored) -------- */
+  --rabbit-blue-0: #eff6ff;
+  --rabbit-blue-1: #dbeafe;
+  --rabbit-blue-2: #bfdbfe;
+  --rabbit-blue-3: #93c5fd;
+  --rabbit-blue-4: #60a5fa;
+  --rabbit-blue-5: #3b82f6;
+  --rabbit-blue-6: #2563eb; /* primary ★ */
+  --rabbit-blue-7: #1d4ed8;
+  --rabbit-blue-8: #1e40af;
+  --rabbit-blue-9: #1e3a8a;
+
+  --rabbit-gray-0: #f9fafb;
+  --rabbit-gray-1: #f3f4f6;
+  --rabbit-gray-2: #e5e7eb; /* default border ★ */
+  --rabbit-gray-3: #d1d5db;
+  --rabbit-gray-4: #9ca3af;
+  --rabbit-gray-5: #6b7280;
+  --rabbit-gray-6: #4b5563;
+  --rabbit-gray-7: #374151;
+  --rabbit-gray-8: #1f2937;
+  --rabbit-gray-9: #111827; /* primary text ★ */
+
+  --rabbit-red-0: #fef2f2;
+  --rabbit-red-1: #fee2e2;
+  --rabbit-red-2: #fecaca;
+  --rabbit-red-3: #fca5a5;
+  --rabbit-red-4: #f87171;
+  --rabbit-red-5: #ef4444;
+  --rabbit-red-6: #d4183d; /* destructive ★ */
+  --rabbit-red-7: #b91c1c;
+  --rabbit-red-8: #991b1b;
+  --rabbit-red-9: #7f1d1d;
+
+  --rabbit-green-0: #f0fdf4;
+  --rabbit-green-1: #dcfce7;
+  --rabbit-green-2: #bbf7d0;
+  --rabbit-green-3: #86efac;
+  --rabbit-green-4: #4ade80;
+  --rabbit-green-5: #22c55e;
+  --rabbit-green-6: #16a34a; /* success ★ */
+  --rabbit-green-7: #15803d;
+  --rabbit-green-8: #166534;
+  --rabbit-green-9: #14532d;
+
+  --rabbit-orange-0: #fffbeb;
+  --rabbit-orange-1: #fef3c7;
+  --rabbit-orange-2: #fde68a;
+  --rabbit-orange-3: #fcd34d;
+  --rabbit-orange-4: #fbbf24;
+  --rabbit-orange-5: #f59e0b;
+  --rabbit-orange-6: #d97706; /* warning ★ */
+  --rabbit-orange-7: #b45309;
+  --rabbit-orange-8: #92400e;
+  --rabbit-orange-9: #78350f;
+
+  --rabbit-purple-0: #f5f3ff;
+  --rabbit-purple-1: #ede9fe;
+  --rabbit-purple-2: #ddd6fe;
+  --rabbit-purple-3: #c4b5fd;
+  --rabbit-purple-4: #a78bfa;
+  --rabbit-purple-5: #8b5cf6;
+  --rabbit-purple-6: #7c3aed; /* purple ★ */
+  --rabbit-purple-7: #6d28d9;
+  --rabbit-purple-8: #5b21b6;
+  --rabbit-purple-9: #4c1d95;
+
+  /* --- Semantic: backgrounds ----------------------------------------- */
+  --rabbit-color-bg:           #ffffff;
+  --rabbit-color-bg-subtle:    var(--rabbit-gray-0);   /* page bg */
+  --rabbit-color-bg-muted:     var(--rabbit-gray-0);   /* card / panel */
+  --rabbit-color-bg-accent:    var(--rabbit-gray-1);   /* hover surface, disabled */
+  --rabbit-color-bg-input:     var(--rabbit-gray-1);
+  --rabbit-color-bg-input-hover:var(--rabbit-gray-2);
+
+  /* --- Semantic: foreground / text ----------------------------------- */
+  --rabbit-color-text:           var(--rabbit-gray-9); /* 88% body */
+  --rabbit-color-text-secondary: var(--rabbit-gray-6); /* 65% */
+  --rabbit-color-text-muted:     var(--rabbit-gray-5); /* 45% */
+  --rabbit-color-text-placeholder: var(--rabbit-gray-4);
+  --rabbit-color-text-on-primary: #ffffff;
+
+  /* --- Semantic: borders --------------------------------------------- */
+  --rabbit-color-border:        var(--rabbit-gray-2);
+  --rabbit-color-border-muted:  var(--rabbit-gray-1);
+  --rabbit-color-border-strong: var(--rabbit-gray-3);
+
+  /* --- Semantic: primary (blue) -------------------------------------- */
+  --rabbit-color-primary:        var(--rabbit-blue-6);
+  --rabbit-color-primary-hover:  var(--rabbit-blue-7);   /* light: darken */
+  --rabbit-color-primary-active: var(--rabbit-blue-8);
+  --rabbit-color-primary-subtle: var(--rabbit-blue-0);
+  --rabbit-color-primary-border: var(--rabbit-blue-2);
+  --rabbit-color-primary-text:   var(--rabbit-blue-7);
+
+  /* --- Semantic: destructive (red) ----------------------------------- */
+  --rabbit-color-destructive:        var(--rabbit-red-6);
+  --rabbit-color-destructive-hover:  var(--rabbit-red-7);
+  --rabbit-color-destructive-subtle: var(--rabbit-red-0);
+  --rabbit-color-destructive-border: var(--rabbit-red-2);
+  --rabbit-color-destructive-text:   var(--rabbit-red-7);
+
+  /* --- Semantic: success (green) ------------------------------------- */
+  --rabbit-color-success:        var(--rabbit-green-6);
+  --rabbit-color-success-hover:  var(--rabbit-green-7);
+  --rabbit-color-success-subtle: var(--rabbit-green-0);
+  --rabbit-color-success-border: var(--rabbit-green-2);
+  --rabbit-color-success-text:   var(--rabbit-green-7);
+
+  /* --- Semantic: warning (orange) ------------------------------------ */
+  --rabbit-color-warning:        var(--rabbit-orange-6);
+  --rabbit-color-warning-hover:  var(--rabbit-orange-7);
+  --rabbit-color-warning-subtle: var(--rabbit-orange-0);
+  --rabbit-color-warning-border: var(--rabbit-orange-2);
+  --rabbit-color-warning-text:   var(--rabbit-orange-7);
+
+  /* --- Semantic: purple (workflow accent) ---------------------------- */
+  --rabbit-color-purple:        var(--rabbit-purple-6);
+  --rabbit-color-purple-subtle: var(--rabbit-purple-0);
+  --rabbit-color-purple-border: var(--rabbit-purple-2);
+  --rabbit-color-purple-text:   var(--rabbit-purple-7);
+
+  /* --- Focus ring ---------------------------------------------------- */
+  --rabbit-color-ring: var(--rabbit-blue-6);
+
+  /* --- Workflow node accents (FlowEditor) ---------------------------- */
+  --rabbit-flow-trigger:  var(--rabbit-color-success);   /* green */
+  --rabbit-flow-llm:      var(--rabbit-color-primary);   /* blue */
+  --rabbit-flow-tool:     var(--rabbit-color-warning);   /* orange/yellow */
+  --rabbit-flow-condition:var(--rabbit-color-purple);    /* purple */
+  --rabbit-flow-output:   var(--rabbit-color-destructive);/* red */
+
+  /* --- Typography: font families ------------------------------------- */
+  /* Pretendard for KR + Latin (Korean product, KR-first audience). */
+  /* Inter is the close Latin fallback. JetBrains Mono for code/UI. */
+  --rabbit-font-sans:
+    "Pretendard Variable", "Pretendard",
+    -apple-system, BlinkMacSystemFont, system-ui,
+    "Apple SD Gothic Neo", "Noto Sans KR",
+    "Inter", "Helvetica Neue", Arial, sans-serif;
+  --rabbit-font-mono:
+    "JetBrains Mono", "SF Mono", ui-monospace,
+    Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* --- Typography: type scale (semantic 4 roles + utility scale) ------ */
+  /* Role-based (preferred) — see .typography-* classes below */
+  --rabbit-text-title-size:   16px;
+  --rabbit-text-title-weight: 600;
+  --rabbit-text-title-leading: 1.4;
+
+  --rabbit-text-body-size:    14px;
+  --rabbit-text-body-weight:  400;
+  --rabbit-text-body-leading: 1.5;
+
+  --rabbit-text-label-size:   13px;
+  --rabbit-text-label-weight: 500;
+  --rabbit-text-label-leading: 1.4;
+
+  --rabbit-text-caption-size: 12px;
+  --rabbit-text-caption-weight: 400;
+  --rabbit-text-caption-leading: 1.4;
+
+  /* Utility scale (for off-role one-offs) */
+  --rabbit-text-2xs: 10px;
+  --rabbit-text-xs:  12px;
+  --rabbit-text-sm:  13px;
+  --rabbit-text-base:14px;
+  --rabbit-text-md:  15px;
+  --rabbit-text-lg:  16px;
+  --rabbit-text-xl:  18px;
+  --rabbit-text-2xl: 20px;
+  --rabbit-text-3xl: 24px;
+  --rabbit-text-4xl: 30px;
+  --rabbit-text-5xl: 36px;
+
+  /* --- Spacing (4-pt base) ------------------------------------------- */
+  --rabbit-space-0:  0;
+  --rabbit-space-1:  4px;
+  --rabbit-space-2:  8px;
+  --rabbit-space-3:  12px;
+  --rabbit-space-4:  16px;
+  --rabbit-space-5:  20px;
+  --rabbit-space-6:  24px;
+  --rabbit-space-8:  32px;
+  --rabbit-space-10: 40px;
+  --rabbit-space-12: 48px;
+  --rabbit-space-16: 64px;
+
+  /* --- Radius -------------------------------------------------------- */
+  --rabbit-radius-sm:   4px;   /* badges, small chips */
+  --rabbit-radius-md:   6px;   /* buttons, inputs (rounded-md) */
+  --rabbit-radius-lg:   10px;  /* select dropdown, large surfaces */
+  --rabbit-radius-xl:   12px;  /* workflow nodes, cards */
+  --rabbit-radius-full: 9999px;
+
+  /* --- Shadows (subtle elevation; Rabbit is flat-leaning) ------------ */
+  --rabbit-shadow-xs: 0 1px 2px 0 rgba(17, 24, 39, 0.04);
+  --rabbit-shadow-sm: 0 1px 2px 0 rgba(17, 24, 39, 0.06),
+                      0 1px 3px 0 rgba(17, 24, 39, 0.05);
+  --rabbit-shadow-md: 0 4px 6px -1px rgba(17, 24, 39, 0.08),
+                      0 2px 4px -2px rgba(17, 24, 39, 0.06);
+  --rabbit-shadow-lg: 0 10px 15px -3px rgba(17, 24, 39, 0.10),
+                      0 4px 6px -4px rgba(17, 24, 39, 0.08);
+  --rabbit-shadow-focus: 0 0 0 2px color-mix(in srgb, var(--rabbit-color-ring) 20%, transparent);
+
+  /* --- Motion (matches duration-{fast|base} + ease-motion) ----------- */
+  --rabbit-duration-fast: 120ms;
+  --rabbit-duration-base: 200ms;
+  --rabbit-duration-slow: 320ms;
+  --rabbit-ease-motion: cubic-bezier(0.2, 0, 0, 1); /* "smooth-out" */
+
+  /* Active-press affordance */
+  --rabbit-press-scale: 0.98;
+}
+
+/* ==========================================================================
+   Dark mode
+   --------------------------------------------------------------------------
+   Strategy:
+     - Backgrounds: solid dark grays, layered (bg < muted < accent).
+     - Primary: shift LIGHTER (6 → 5 → 4) for hover, since base bg is dark.
+     - Text: alpha-on-white, per Ant Design recommendation (88/65/45/25%).
+   ========================================================================== */
+.dark,
+[data-theme="dark"] {
+  --rabbit-color-bg:           var(--rabbit-gray-9); /* #111827 */
+  --rabbit-color-bg-subtle:    var(--rabbit-gray-9);
+  --rabbit-color-bg-muted:     var(--rabbit-gray-8); /* card */
+  --rabbit-color-bg-accent:    var(--rabbit-gray-7); /* hover */
+  --rabbit-color-bg-input:     var(--rabbit-gray-8);
+  --rabbit-color-bg-input-hover:var(--rabbit-gray-7);
+
+  --rabbit-color-text:           rgba(255, 255, 255, 0.88);
+  --rabbit-color-text-secondary: rgba(255, 255, 255, 0.65);
+  --rabbit-color-text-muted:     rgba(255, 255, 255, 0.45);
+  --rabbit-color-text-placeholder: rgba(255, 255, 255, 0.25);
+
+  --rabbit-color-border:        var(--rabbit-gray-7);
+  --rabbit-color-border-muted:  #1f1f1f;
+  --rabbit-color-border-strong: var(--rabbit-gray-6);
+
+  --rabbit-color-primary:        var(--rabbit-blue-5);
+  --rabbit-color-primary-hover:  var(--rabbit-blue-4);
+  --rabbit-color-primary-active: var(--rabbit-blue-6);
+  --rabbit-color-primary-subtle: #1e3a5f;
+  --rabbit-color-primary-border: var(--rabbit-blue-7);
+  --rabbit-color-primary-text:   var(--rabbit-blue-3);
+
+  --rabbit-color-destructive:        var(--rabbit-red-5);
+  --rabbit-color-destructive-hover:  var(--rabbit-red-4);
+  --rabbit-color-destructive-subtle: #3a1414;
+  --rabbit-color-destructive-border: var(--rabbit-red-7);
+  --rabbit-color-destructive-text:   var(--rabbit-red-3);
+
+  --rabbit-color-success:        var(--rabbit-green-5);
+  --rabbit-color-success-subtle: #0f2916;
+  --rabbit-color-success-border: var(--rabbit-green-8);
+  --rabbit-color-success-text:   var(--rabbit-green-3);
+
+  --rabbit-color-warning:        var(--rabbit-orange-5);
+  --rabbit-color-warning-subtle: #2a1d05;
+  --rabbit-color-warning-border: var(--rabbit-orange-8);
+  --rabbit-color-warning-text:   var(--rabbit-orange-3);
+
+  --rabbit-color-purple:        var(--rabbit-purple-5);
+  --rabbit-color-purple-subtle: #221538;
+  --rabbit-color-purple-border: var(--rabbit-purple-8);
+  --rabbit-color-purple-text:   var(--rabbit-purple-3);
+
+  --rabbit-color-ring: var(--rabbit-blue-5);
+}
+
+/* ==========================================================================
+   Base + role-based typography classes
+   --------------------------------------------------------------------------
+   Use the four role classes (.typography-{title|body|label|caption}) for 95%
+   of UI text. Override color with utility (e.g. .text-primary-text) as needed.
+   ========================================================================== */
+
+html,
+body {
+  font-family: var(--rabbit-font-sans);
+  font-size: var(--rabbit-text-body-size);
+  line-height: var(--rabbit-text-body-leading);
+  color: var(--rabbit-color-text);
+  background: var(--rabbit-color-bg);
+  font-feature-settings: "ss01", "tnum"; /* Pretendard stylistic + tabular nums */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+code, kbd, samp, pre, .typography-mono {
+  font-family: var(--rabbit-font-mono);
+  font-size: 0.92em;
+}
+
+.typography-title {
+  font-size: var(--rabbit-text-title-size);
+  font-weight: var(--rabbit-text-title-weight);
+  line-height: var(--rabbit-text-title-leading);
+  color: var(--rabbit-color-text);
+  letter-spacing: -0.005em;
+}
+
+.typography-body {
+  font-size: var(--rabbit-text-body-size);
+  font-weight: var(--rabbit-text-body-weight);
+  line-height: var(--rabbit-text-body-leading);
+  color: var(--rabbit-color-text);
+}
+
+.typography-label {
+  font-size: var(--rabbit-text-label-size);
+  font-weight: var(--rabbit-text-label-weight);
+  line-height: var(--rabbit-text-label-leading);
+  color: var(--rabbit-color-text-secondary);
+}
+
+.typography-caption {
+  font-size: var(--rabbit-text-caption-size);
+  font-weight: var(--rabbit-text-caption-weight);
+  line-height: var(--rabbit-text-caption-leading);
+  color: var(--rabbit-color-text-muted);
+}
+
+/* Display / page-level headings (used in marketing-style surfaces, story docs) */
+h1, .h1 { font: 600 var(--rabbit-text-4xl)/1.2 var(--rabbit-font-sans); letter-spacing: -0.02em; color: var(--rabbit-color-text); }
+h2, .h2 { font: 600 var(--rabbit-text-3xl)/1.25 var(--rabbit-font-sans); letter-spacing: -0.015em; color: var(--rabbit-color-text); }
+h3, .h3 { font: 600 var(--rabbit-text-2xl)/1.3 var(--rabbit-font-sans); letter-spacing: -0.01em; color: var(--rabbit-color-text); }
+h4, .h4 { font: 600 var(--rabbit-text-xl)/1.35 var(--rabbit-font-sans); color: var(--rabbit-color-text); }
+
+/* Quick semantic color helpers (for plain HTML use without Tailwind) */
+.text-fg          { color: var(--rabbit-color-text); }
+.text-fg-secondary{ color: var(--rabbit-color-text-secondary); }
+.text-fg-muted    { color: var(--rabbit-color-text-muted); }
+.text-fg-placeholder { color: var(--rabbit-color-text-placeholder); }
+.text-primary     { color: var(--rabbit-color-primary); }
+.text-success     { color: var(--rabbit-color-success-text); }
+.text-warning     { color: var(--rabbit-color-warning-text); }
+.text-destructive { color: var(--rabbit-color-destructive-text); }
+
+.bg-page    { background: var(--rabbit-color-bg); }
+.bg-muted   { background: var(--rabbit-color-bg-muted); }
+.bg-accent  { background: var(--rabbit-color-bg-accent); }
+
+.border-default { border: 1px solid var(--rabbit-color-border); }
