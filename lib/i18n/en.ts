@@ -33,12 +33,6 @@ export const en = {
     lead: 'Works on any JetBrains IDE 2024.2+ with JCEF enabled (default).',
   },
   faq: { eyebrow: 'FAQ', title: 'Frequently asked' },
-  cta: {
-    title: 'Bring the joy back to Markdown.',
-    lead: 'Open source · free · updated weekly.',
-    primary: 'Install from Marketplace',
-    secondary: '★ GitHub Star',
-  },
   foot: ['GitHub', 'Issues', 'Changelog', 'License'] as [string, string, string, string],
 };
 
