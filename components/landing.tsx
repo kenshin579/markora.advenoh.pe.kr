@@ -6,7 +6,6 @@ import { Demos } from './demos';
 import { Slash } from './slash';
 import { Install } from './install';
 import { FAQ } from './faq';
-import { FinalCTA } from './final-cta';
 import { Footer } from './footer';
 
 export function Landing({ t, lang }: { t: Dict; lang: 'en' | 'ko' }) {
@@ -19,7 +18,6 @@ export function Landing({ t, lang }: { t: Dict; lang: 'en' | 'ko' }) {
       <Slash t={t} lang={lang} />
       <Install t={t} lang={lang} />
       <FAQ t={t} lang={lang} />
-      <FinalCTA t={t} />
       <Footer t={t} lang={lang} />
     </>
   );

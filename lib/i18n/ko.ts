@@ -35,11 +35,5 @@ export const ko: Dict = {
     lead: 'JCEF가 켜진 JetBrains IDE 2024.2 이상이면 됩니다.',
   },
   faq: { eyebrow: 'FAQ', title: '자주 묻는 질문' },
-  cta: {
-    title: '마크다운 편집을 다시 즐겁게.',
-    lead: '오픈소스 · 무료 · 매주 업데이트.',
-    primary: 'Marketplace에서 설치',
-    secondary: '★ GitHub Star',
-  },
   foot: ['GitHub', '이슈', 'Changelog', '라이선스'],
 };
