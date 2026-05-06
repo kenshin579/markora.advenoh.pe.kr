@@ -29,8 +29,8 @@ function getFeats(lang: 'en' | 'ko'): Feat[] {
     },
     {
       ic: 'image',
-      t: lang === 'ko' ? '이미지 드롭' : 'Image drop',
-      d: lang === 'ko' ? '드래그·붙여넣기 한 번으로 images/ 폴더 자동 정리.' : 'Drag, drop, paste — auto-organized into images/.',
+      t: lang === 'ko' ? '이미지 추가' : 'Add images',
+      d: lang === 'ko' ? '/image 입력 후 파일을 고르면 images/ 폴더에 자동 정리.' : 'Type /image and pick a file — auto-organized into images/.',
     },
     {
       ic: 'link',
