@@ -224,107 +224,307 @@ a { color: inherit; text-decoration: none; }
 .mk-hero-trust-dot { width: 4px; height: 4px; background: currentColor; border-radius: 50%; opacity: 0.5; }
 .mk-hero-cta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 8px; }
 
-/* ---------- IDE mock ---------- */
+/* ---------- IDE mock (IntelliJ New UI Dark) ---------- */
 .mk-ide {
+  /* IntelliJ Darcula / New UI palette — locked dark regardless of site theme */
+  --ij-bg: #1e1f22;
+  --ij-bg-2: #2b2d30;
+  --ij-bg-3: #393b40;
+  --ij-border: #1e1f22;
+  --ij-border-2: #393b40;
+  --ij-text: #dfe1e5;
+  --ij-text-2: #bcbec4;
+  --ij-text-3: #6f737a;
+  --ij-accent: #3574f0;
+  --ij-selection: #2e436e;
+  --ij-selection-soft: rgba(53, 116, 240, 0.16);
+
   position: relative;
-  border-radius: var(--rabbit-radius-xl);
-  background: var(--rabbit-color-bg);
-  border: 1px solid var(--rabbit-color-border);
+  border-radius: 12px;
+  background: var(--ij-bg);
+  border: 1px solid #000;
+  color: var(--ij-text);
   box-shadow:
-    0 1px 2px rgba(17,24,39,0.04),
-    0 8px 32px rgba(17,24,39,0.08),
-    0 24px 64px rgba(17,24,39,0.10);
+    0 1px 2px rgba(0,0,0,0.5),
+    0 8px 32px rgba(0,0,0,0.35),
+    0 24px 64px rgba(0,0,0,0.4);
   overflow: hidden;
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
-[data-theme="dark"] .mk-ide {
-  box-shadow: 0 1px 2px rgba(0,0,0,0.5), 0 24px 64px rgba(0,0,0,0.4);
-}
+
+/* Titlebar — macOS dots + IntelliJ project tabs + actions */
 .mk-ide-titlebar {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 10px 14px;
-  background: var(--rabbit-color-bg-muted);
-  border-bottom: 1px solid var(--rabbit-color-border-muted);
+  gap: 14px;
+  padding: 8px 12px;
+  background: var(--ij-bg-2);
+  border-bottom: 1px solid var(--ij-border);
 }
 .mk-ide-dots { display: flex; gap: 6px; }
 .mk-ide-dot { width: 12px; height: 12px; border-radius: 50%; }
-.mk-ide-title {
-  flex: 1;
-  text-align: center;
-  font-family: "JetBrains Mono", monospace;
+.mk-ide-frame-tabs {
+  display: flex;
+  gap: 2px;
   font-size: 12px;
-  color: var(--rabbit-color-text-muted);
+  color: var(--ij-text-2);
 }
+.mk-ide-frame-tab {
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: default;
+}
+.mk-ide-frame-tab.active {
+  background: var(--ij-bg-3);
+  color: var(--ij-text);
+}
+.mk-ide-frame-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--ij-text-2);
+}
+.mk-ide-current-file {
+  padding: 3px 8px;
+  border-radius: 4px;
+  background: var(--ij-bg-3);
+  font-size: 11.5px;
+}
+.mk-ide-icon-btn {
+  width: 22px; height: 22px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 4px;
+  color: var(--ij-text-3);
+  font-size: 13px;
+}
+
+/* Tab bar — file tabs */
 .mk-ide-tabbar {
   display: flex;
   align-items: stretch;
   gap: 0;
-  padding: 0 12px;
-  background: var(--rabbit-color-bg-muted);
-  border-bottom: 1px solid var(--rabbit-color-border-muted);
-  font-family: "JetBrains Mono", monospace;
+  padding: 0;
+  background: var(--ij-bg-2);
+  border-bottom: 1px solid var(--ij-border);
   font-size: 12px;
-  color: var(--rabbit-color-text-secondary);
+  color: var(--ij-text-2);
 }
 .mk-ide-tab {
-  padding: 8px 14px;
-  border-radius: 6px 6px 0 0;
-  display: flex; align-items: center; gap: 6px;
-  border-top: 2px solid transparent;
-}
-.mk-ide-tab.active {
-  background: var(--rabbit-color-bg);
-  color: var(--rabbit-color-text);
-  border-top-color: var(--mk-accent);
-}
-.mk-ide-toolbar {
-  padding: 4px 10px;
-  background: var(--rabbit-color-bg);
-  border-bottom: 1px solid var(--rabbit-color-border-muted);
-  display: flex;
-  gap: 4px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11px;
-  color: var(--rabbit-color-text-muted);
-}
-.mk-ide-tool { padding: 3px 7px; border-radius: 4px; }
-.mk-ide-tool.active { background: var(--rabbit-color-bg-accent); color: var(--rabbit-color-text); }
-
-.mk-ide-body {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  min-height: 460px;
-}
-.mk-ide-sidebar {
-  background: var(--rabbit-color-bg-muted);
-  border-right: 1px solid var(--rabbit-color-border-muted);
-  padding: 12px 6px;
-  font-family: "JetBrains Mono", monospace;
-  font-size: 11.5px;
-  color: var(--rabbit-color-text-secondary);
-}
-.mk-ide-sidebar .row {
-  padding: 4px 10px;
-  border-radius: 4px;
+  padding: 7px 14px 7px 12px;
   display: flex;
   align-items: center;
   gap: 6px;
+  border-right: 1px solid var(--ij-border);
+  position: relative;
+  cursor: default;
 }
-.mk-ide-sidebar .row.dim { color: var(--rabbit-color-text-muted); }
-.mk-ide-sidebar .row.indent { padding-left: 24px; }
-.mk-ide-sidebar .row.active {
-  background: color-mix(in srgb, var(--mk-accent) 14%, transparent);
-  color: var(--mk-accent-text);
+.mk-ide-tab.active {
+  background: var(--ij-bg);
+  color: var(--ij-text);
 }
-.mk-ide-sidebar .caret { width: 10px; color: var(--rabbit-color-text-muted); }
+.mk-ide-tab.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 2px;
+  background: var(--ij-accent);
+}
+.mk-ide-tab-close {
+  margin-left: 4px;
+  color: var(--ij-text-3);
+  font-size: 14px;
+  line-height: 1;
+}
+.mk-ide-file-icon {
+  width: 14px; height: 14px;
+  border-radius: 3px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 8px;
+  font-weight: 700;
+  font-family: "JetBrains Mono", monospace;
+  color: white;
+  flex-shrink: 0;
+}
+.mk-ide-file-icon.md { background: #4d8af0; }
+.mk-ide-file-icon.kt { background: #a45ee5; }
+.mk-ide-file-icon.plain { background: var(--ij-bg-3); color: var(--ij-text-2); }
 
+/* Body grid */
+.mk-ide-body {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 480px;
+  background: var(--ij-bg);
+}
+
+/* Sidebar — Project tool window */
+.mk-ide-sidebar {
+  background: var(--ij-bg-2);
+  border-right: 1px solid var(--ij-border);
+  padding: 4px 0;
+  font-size: 12px;
+  color: var(--ij-text-2);
+}
+.mk-ide-sidebar-header {
+  padding: 6px 12px;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--ij-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid var(--ij-border);
+  margin-bottom: 4px;
+}
+.mk-ide-sidebar .row {
+  padding: 3px 12px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: default;
+}
+.mk-ide-sidebar .row.dim { color: var(--ij-text); font-weight: 500; }
+.mk-ide-sidebar .row.indent { padding-left: 26px; }
+.mk-ide-sidebar .row.indent2 { padding-left: 44px; }
+.mk-ide-sidebar .row.active {
+  background: var(--ij-selection);
+  color: var(--ij-text);
+}
+.mk-ide-sidebar .caret {
+  width: 10px;
+  color: var(--ij-text-3);
+  font-size: 8px;
+  flex-shrink: 0;
+}
+.mk-ide-sidebar .folder-icon {
+  width: 14px; height: 14px;
+  background: linear-gradient(180deg, #d2a85a 0%, #b8893f 100%);
+  border-radius: 2px 2px 1px 1px;
+  position: relative;
+  flex-shrink: 0;
+}
+.mk-ide-sidebar .folder-icon::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 6px; height: 2px;
+  background: #d2a85a;
+  border-radius: 1px 1px 0 0;
+  transform: translateY(-1px);
+}
+.mk-ide-sidebar .folder-icon.open {
+  background: linear-gradient(180deg, #6c87b8 0%, #4d6796 100%);
+}
+.mk-ide-sidebar .folder-icon.open::before {
+  background: #6c87b8;
+}
+.mk-ide-sidebar .file-icon {
+  width: 14px; height: 14px;
+  border-radius: 2px;
+  display: inline-block;
+  flex-shrink: 0;
+  position: relative;
+  font-size: 7px;
+  font-weight: 700;
+  color: white;
+  text-align: center;
+  line-height: 14px;
+  font-family: "JetBrains Mono", monospace;
+}
+.mk-ide-sidebar .file-icon.md { background: #4d8af0; }
+.mk-ide-sidebar .file-icon.md::after { content: "MD"; position: absolute; inset: 0; }
+.mk-ide-sidebar .file-icon.kt { background: #a45ee5; }
+.mk-ide-sidebar .file-icon.kt::after { content: "KT"; position: absolute; inset: 0; }
+.mk-ide-sidebar .file-icon.plain { background: var(--ij-bg-3); }
+
+/* Editor wrapper holds editor + bottom mode tabs */
+.mk-ide-editor-wrap {
+  display: flex;
+  flex-direction: column;
+  background: var(--ij-bg);
+}
 .mk-ide-editor {
-  background: var(--rabbit-color-bg);
-  padding: 28px 36px 32px;
+  flex: 1;
+  background: var(--ij-bg);
+  padding: 24px 32px 28px;
   font-size: 14px;
   line-height: 1.65;
   position: relative;
+  color: var(--ij-text-2);
+  overflow: hidden;
+}
+
+/* Bottom mode tabs (Markdown Split Editor / Markora) — IntelliJ-specific */
+.mk-ide-modetabs {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0 12px;
+  background: var(--ij-bg);
+  border-top: 1px solid var(--ij-border-2);
+  font-size: 11.5px;
+  color: var(--ij-text-3);
+}
+.mk-ide-modetab {
+  padding: 6px 12px;
+  border-bottom: 2px solid transparent;
+  cursor: default;
+}
+.mk-ide-modetab.active {
+  color: var(--ij-text);
+  border-bottom-color: var(--ij-accent);
+}
+.mk-ide-modetabs-saved {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--ij-text-3);
+  font-size: 11px;
+}
+.mk-ide-saved-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #5fb865;
+  display: inline-block;
+}
+
+/* Status bar — breadcrumb + status pills */
+.mk-ide-statusbar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  background: var(--ij-bg-2);
+  border-top: 1px solid var(--ij-border);
+  font-size: 11px;
+  color: var(--ij-text-3);
+}
+.mk-ide-statusbar-burger {
+  font-size: 13px;
+  margin-right: 4px;
+}
+.mk-ide-crumb { color: var(--ij-text-2); }
+.mk-ide-crumb.current { color: var(--ij-text); }
+.mk-ide-crumb-sep { color: var(--ij-text-3); margin: 0 1px; }
+.mk-ide-statusbar-spacer { flex: 1; }
+.mk-ide-status-pill {
+  padding: 1px 7px;
+  border-radius: 3px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  background: var(--ij-bg-3);
+  color: var(--ij-text-2);
+}
+.mk-ide-status-pill.muted {
+  background: transparent;
+  color: var(--ij-text-3);
+  padding: 1px 4px;
 }
 
 /* doc content blocks (BlockNote-style) */
@@ -466,6 +666,132 @@ a { color: inherit; text-decoration: none; }
   color: var(--rabbit-color-text-muted);
   padding: 6px 10px 4px;
 }
+
+/* ---------- IntelliJ-tone overrides for doc content inside .mk-ide ---------- */
+.mk-ide .doc-h1 { color: var(--ij-text); font-size: 28px; font-weight: 700; }
+.mk-ide .doc-h2 { color: var(--ij-text); font-size: 19px; }
+.mk-ide .doc-meta { color: var(--ij-text-3); font-size: 11.5px; }
+.mk-ide .doc-p { color: var(--ij-text-2); }
+.mk-ide .doc-li-text { color: var(--ij-text-2); }
+.mk-ide .doc-li.done .doc-li-text { color: var(--ij-text-3); }
+.mk-ide .doc-li .checkbox {
+  border-color: var(--ij-text-3);
+  background: transparent;
+}
+.mk-ide .doc-li .checkbox.checked,
+.mk-ide .doc-li.done .checkbox {
+  background: var(--ij-accent);
+  border-color: var(--ij-accent);
+}
+.mk-ide .doc-li .checkbox.checked::after,
+.mk-ide .doc-li.done .checkbox::after {
+  content: "✓";
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+}
+.mk-ide .doc-handle { color: var(--ij-text-3); }
+
+/* Inline math chip (looks like KaTeX rendered token) */
+.mk-ide .doc-math-inline {
+  display: inline-block;
+  padding: 1px 7px;
+  background: rgba(53, 116, 240, 0.14);
+  border: 1px solid rgba(53, 116, 240, 0.28);
+  border-radius: 4px;
+  font-family: "Times New Roman", "Cambria Math", serif;
+  font-size: 13.5px;
+  font-style: italic;
+  color: #cbdaf7;
+  letter-spacing: 0.01em;
+}
+
+/* Slash menu trigger / blinking cursor on the typing block */
+.mk-ide .doc-slash-trigger {
+  font-family: "JetBrains Mono", monospace;
+  color: var(--ij-text);
+  font-size: 14px;
+  background: rgba(53, 116, 240, 0.12);
+  padding: 0 4px;
+  border-radius: 3px;
+}
+.mk-ide .doc-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 14px;
+  background: var(--ij-text);
+  margin-left: 1px;
+  vertical-align: -2px;
+  animation: ij-caret 1s steps(1) infinite;
+}
+@keyframes ij-caret {
+  50% { opacity: 0; }
+}
+.mk-ide .doc-block.typing { position: relative; }
+
+/* Slash menu popover — IntelliJ popup style. Drop UP from the typing block
+   so the menu doesn't clip against the editor's overflow boundary. */
+.mk-ide .doc-slash-menu {
+  position: absolute;
+  bottom: calc(100% + 6px);
+  left: 18px;
+  background: #2b2d30;
+  border: 1px solid #393b40;
+  border-radius: 8px;
+  box-shadow:
+    0 1px 2px rgba(0,0,0,0.6),
+    0 12px 32px rgba(0,0,0,0.55);
+  padding: 4px;
+  min-width: 280px;
+  font-size: 12.5px;
+  z-index: 5;
+}
+.mk-ide .doc-slash-search {
+  padding: 6px 10px;
+  margin: 2px 2px 4px;
+  background: #1e1f22;
+  border: 1px solid #393b40;
+  border-radius: 4px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ij-text);
+}
+.mk-ide .doc-slash-header {
+  color: var(--ij-text-3);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 6px 10px 4px;
+}
+.mk-ide .doc-slash-item {
+  padding: 6px 10px;
+  border-radius: 4px;
+  color: var(--ij-text);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.mk-ide .doc-slash-item.highlighted {
+  background: var(--ij-selection);
+  color: var(--ij-text);
+}
+.mk-ide .doc-slash-item .icon {
+  width: 22px; height: 22px;
+  border-radius: 4px;
+  background: var(--ij-bg-3);
+  color: var(--ij-text-2);
+}
+.mk-ide .doc-slash-item.highlighted .icon {
+  background: var(--ij-accent);
+  color: white;
+}
+.mk-ide .doc-slash-item .text { flex: 1; min-width: 0; }
+.mk-ide .doc-slash-item .text .t { color: var(--ij-text); }
+.mk-ide .doc-slash-item .text .s { color: var(--ij-text-3); font-size: 11px; }
+.mk-ide .doc-slash-item .key { color: var(--ij-text-3); font-size: 10.5px; }
+.mk-ide .doc-slash-divider { background: #393b40; }
 
 /* floating detail cards over hero */
 .mk-hero-float-card {

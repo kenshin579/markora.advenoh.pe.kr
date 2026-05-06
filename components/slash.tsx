@@ -8,7 +8,7 @@ function getRows(lang: 'en' | 'ko'): Row[] {
     { cmd: '/list, /numbered, /check', desc: lang === 'ko' ? '글머리·번호·체크박스' : 'Bullet, numbered, or checklist', group: 'default' },
     { cmd: '/code', desc: lang === 'ko' ? '코드 블록 (언어 자동 인식)' : 'Code block — language-aware', group: 'default' },
     { cmd: '/table', desc: lang === 'ko' ? '표 삽입 — 행/열 자유 편집' : 'Insert a table — add/remove rows freely', group: 'default' },
-    { cmd: '/image', desc: lang === 'ko' ? '이미지 업로드 또는 클립보드 붙여넣기' : 'Upload or paste from clipboard', group: 'default' },
+    { cmd: '/image', desc: lang === 'ko' ? '파일 선택 다이얼로그로 이미지 추가' : 'Pick a file to insert an image', group: 'default' },
     { cmd: '/quote, /divider', desc: lang === 'ko' ? '인용·구분선' : 'Blockquote, divider', group: 'default' },
     { cmd: '/math', desc: lang === 'ko' ? 'LaTeX 수식 블록 (KaTeX)' : 'LaTeX math block (KaTeX)', group: 'markora' },
     { cmd: '/equation', desc: lang === 'ko' ? '인라인 수식 — $...$' : 'Inline equation — $...$', group: 'markora' },
