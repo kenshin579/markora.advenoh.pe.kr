@@ -42,9 +42,9 @@ npm run check    # tsc --noEmit
 
 IDE 목업 / Math / Mermaid 데모의 인라인 텍스트는 dict가 아닌 컴포넌트 내부 `lang === 'ko' ? ... : ...` 분기로 관리 (디자인 충실 포팅).
 
-## CTA 출시 전 상태
+## Marketplace URL gating
 
-`lib/site-config.ts`의 `marketplace`가 빈 문자열이면 Hero/FinalCTA의 "Install from Marketplace" 버튼이 disabled + "Coming soon" 배지. URL을 채우면 자동 활성화.
+`lib/site-config.ts`의 `marketplace` 값에 따라 Hero/FinalCTA의 "Install from Marketplace" 버튼이 자동 토글됨: 빈 문자열이면 disabled + "Coming soon" 배지, URL이 채워져 있으면 active link. 현재는 publish된 marketplace URL이 채워진 상태 (plugin ID 31598).
 
 ## Git
 
